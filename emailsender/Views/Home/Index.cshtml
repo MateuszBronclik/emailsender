@@ -1,8 +1,62 @@
-﻿@{
+﻿@model emailsender.Models.MailModel
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Welcome to Email Sender</h1>
+    <p>please fill all required fields to send email</a>.</p>
 </div>
+
+<div class="container align-content-center"style="max-width:380px">
+    <ol class="breadcrumb row-cols-1" style="margin-top:50px; border-radius:24px">
+        <div class="form-group">
+            <label for="exampleInputEmail1" class="form-label mt-4">Insert your email adress</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Your email">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1" class="form-label mt-4">Insert the recipient's email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Recipient's email">
+            <small id="emailHelp" class=""</small>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1" class="form-label mt-4">Insert message subject</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Subject">
+            <small id="emailHelp" class="form-text text-muted"></small>
+        </div>
+        <div class="form-group">
+            <label for="exampleTextarea" class="form-label mt-4">Your message to the recipient</label>
+                <textarea class="form-control" id="exampleTextarea" rows="6"  spellcheck="false"></textarea>
+        </div>
+        <div style="text-align:right; margin:10px auto 0px auto;">
+            </fieldset>
+                <button type="submit" class="btn btn-primary">Send</button>
+            </fieldset>
+        </div>
+    </ol>
+</div>
+
+@*<div class="container align-content-center">
+    <ol class="breadcrumb">
+        <fieldset>
+            <legend>
+                Send Email
+            </legend>
+            @using (Html.BeginForm())
+            {
+                @Html.ValidationSummary()
+                <p>From: </p>
+                <p>@Html.TextBoxFor(m=>m.From)</p>
+                <p>To: </p>
+                <p>@Html.TextBoxFor(m=>m.To)</p>
+                <p>Subject: </p>
+                <p>@Html.TextBoxFor(m=>m.Subject)</p>
+                <p>Body: </p>
+                <p>@Html.TextAreaFor(m=>m.Body)</p>
+                <input type="submit" value="Send" />
+            }
+        </fieldset>
+    </ol>
+</div>
+*@
