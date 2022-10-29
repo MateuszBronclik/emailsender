@@ -11,6 +11,7 @@ namespace emailsender.Models
         public string To { get; set; }
 
         [Required]
+        [StringLength(256, ErrorMessage = "The Subject value cannot exceed 256 characters. ")]
         public string Subject { get; set; }
       
         public string Body { get; set; }
