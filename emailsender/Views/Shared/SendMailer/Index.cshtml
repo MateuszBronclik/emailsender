@@ -2,32 +2,34 @@
 @{
     ViewData["Title"] = "Home Page";
 }
-
-<div class="container align-content-center" style="max-width:380px">
-    <div class="breadcrumb row-cols-1" style="margin-top:50px; border-radius:24px">
-        <div>
-            <label asp-for="From" class="form-label mt-4">Insert your email adress</label>
-            @Html.TextBoxFor(m => m.From,new { @class = "form-control", @placeholder = "Your email"})
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-        </div>
-        <div>
-            <label asp-for="To" class="form-label mt-4">Insert the recipient's email address</label>
-            @Html.TextBoxFor(m => m.To,new { @class = "form-control", @placeholder = "Recipient's email"})
-            <small id="emailHelp" class="form-text text-muted"></small>
-        </div>
-        <div class="form-group">
-            <label asp-for="Subject" class="form-label mt-4">Message subject</label>
-            @Html.TextBoxFor(m => m.Subject,new { @class = "form-control", @placeholder = "Subject..."})
-            <small id="emailHelp" class="form-text text-muted">Maximum subject length is 256 characters</small>
-        </div>
-        <div class="form-group">
-            <label asp-for="Body" class="form-label mt-4">Your message to the recipient</label>
-            @Html.TextAreaFor(m => m.Body,new { @class = "form-control", @rows = "6", @id = "exsampleTextarea"})
-        </div>
-        <div style="text-align:right; margin:10px auto 0px auto;">
-            <input type="submit" value="Send" class="btn btn-primary"></input>
+<form>
+    <div class="container align-content-center" style="max-width:400px">
+        <div class="breadcrumb row-cols-1" style="margin-top:20px; border-radius:24px">
+            <div>
+                <label asp-for="From" class="form-label mt-4">Insert your email adress</label>
+                @Html.TextBoxFor(m => m.From,new { @class = "form-control", @placeholder = "Your email"})
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+            <div>
+                <label asp-for="To" class="form-label mt-4">Insert the recipient's email address</label>
+                @Html.TextBoxFor(m => m.To,new { @class = "form-control", @placeholder = "Recipient's email"})
+                <small id="emailHelp" class="form-text text-muted"></small>
+            </div>
+            <div class="form-group">
+                <label asp-for="Subject" class="form-label mt-4">Message subject</label>
+                @Html.TextBoxFor(m => m.Subject,new { @class = "form-control", @placeholder = "Subject..."})
+                <small id="emailHelp" class="form-text text-muted">Maximum subject length is 256 characters</small>
+            </div>
+            <div class="form-group">
+                <label asp-for="Body" class="form-label mt-4">Your message to the recipient</label>
+                @Html.TextAreaFor(m => m.Body,new { @class = "form-control", @rows = "6", @id = "exsampleTextarea"})
+            </div>
+            <div class="form-group" style="text-align:right; margin:10px auto 0px auto;">
+                <input type="submit" asp-controller="SendMailer" asp-action="MailModel" value="Send" class="btn btn-primary"></span>
+            </div>
         </div>
     </div>
-</div>
+</form>
 
 
+                
