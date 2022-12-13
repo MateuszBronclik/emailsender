@@ -2,8 +2,7 @@
 # Email Sender
 
 A simple web-based tool that allows users to quickly and easily compose and send e-mail messages. 
-It is written in ASP.NET and offers a user-friendly interface. 
-
+Created in ASP.NET and offers a user-friendly interface. 
 
 Status: Work in progress
 
