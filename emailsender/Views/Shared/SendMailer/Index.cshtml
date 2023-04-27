@@ -2,7 +2,7 @@
 @{
     ViewData["Title"] = "Home Page";
 }
-<form>
+<form method="post">
     <div class="container align-content-center" style="max-width:400px">
         <div class="breadcrumb row-cols-1" style="margin-top:20px; border-radius:24px">
             <div>
@@ -25,7 +25,7 @@
                 @Html.TextAreaFor(m => m.Body,new { @class = "form-control", @rows = "6", @id = "exsampleTextarea"})
             </div>
             <div class="form-group" style="text-align:right; margin:10px auto 0px auto;">
-                <input type="submit" asp-controller="SendMailer" asp-action="MailModel" value="Send" class="btn btn-primary"></span>
+                <input type="submit" asp-controller="SendMailer" asp-action="Index" value="Send" class="btn btn-primary">
             </div>
         </div>
     </div>

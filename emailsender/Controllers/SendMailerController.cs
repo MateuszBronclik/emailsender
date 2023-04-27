@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using System;
 using System.Net.Mail;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,33 +11,47 @@ namespace emailsender.Controllers
         {
             return View();
         }
+        public IActionResult Success()
+        {
+            return View();
+        }
 
         [HttpPost]
-        public ViewResult Index(Models.MailModel _objModelMail)
+        public IActionResult Index(Models.MailModel _objModelMail)
         {
             if (ModelState.IsValid)
             {
-                MailMessage mail = new MailMessage();
-                mail.To.Add(_objModelMail.To);
-                mail.From = new MailAddress(_objModelMail.From);
-                mail.Subject = _objModelMail.Subject;
-                string Body = _objModelMail.Body;
-                mail.Body = Body;
-                mail.IsBodyHtml = true;
-                SmtpClient smtp = new SmtpClient();
-                smtp.Host = "smtp.gmail.com";
-                smtp.Port = 587;
-                smtp.UseDefaultCredentials = true;
-                smtp.Credentials = new System.Net.NetworkCredential("username", "password"); // podac haslo i email wysylajacego
-                smtp.EnableSsl = true;
-                smtp.Send(mail);
-                return View("Index", _objModelMail);
+                try
+                {
+                    MailMessage mail = new MailMessage();
+                    mail.To.Add(_objModelMail.To);
+                    mail.From = new MailAddress(_objModelMail.From);
+                    mail.Subject = _objModelMail.Subject;
+                    string Body = _objModelMail.Body;
+                    mail.Body = Body;
+                    mail.IsBodyHtml = true;
+                    SmtpClient smtp = new SmtpClient();
+                    smtp.Host = "smtp.gmail.com";
+                    smtp.Port = 587;
+                    smtp.UseDefaultCredentials = true;
+                    smtp.Credentials = new System.Net.NetworkCredential("username", "password"); // podać hasło i email wysyłającego
+                    smtp.EnableSsl = true;
+                    smtp.Send(mail);
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError("", $"Wystąpił błąd podczas wysyłania e-maila: {ex.Message}");
+                    return View(_objModelMail);
+                }
+
+                return RedirectToAction("Success");
             }
             else
             {
                 return View();
             }
         }
+
 
 
         #region default crud
