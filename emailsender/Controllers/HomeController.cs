@@ -15,7 +15,7 @@ namespace emailsender.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            return RedirectToAction("Index", "SendMailer");
         }
 
         public IActionResult Privacy()
